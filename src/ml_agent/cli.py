@@ -72,9 +72,8 @@ def main(
     debug: bool = typer.Option(False, "--debug", help="Enable debug logging"),
 ):
     """ML Agent Framework - Multi-provider ML workflows."""
-    if debug:
-        import sys
-        sys.exit(0) # Placeholder for debug setup
+    # Debug logging can be enabled later via LOG_LEVEL env var
+    pass
 
 if __name__ == "__main__":
     app()

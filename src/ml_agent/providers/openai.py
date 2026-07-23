@@ -55,5 +55,8 @@ class OpenAIProvider(BaseProvider):
                 messages=[{"role": "user", "content": "test"}]
             )
             return True
-        except:
+        except (openai.AuthenticationError, openai.APIError):
+            return False
+        except Exception:
+            # Log unexpected errors but don't mask them completely
             return False

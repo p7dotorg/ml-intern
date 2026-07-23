@@ -87,3 +87,4 @@ class InteractiveStrategy(AuthStrategy):
 
         with open(self.auth_file, "w") as f:
             json.dump(data, f, indent=2)
+        os.chmod(self.auth_file, 0o600)
