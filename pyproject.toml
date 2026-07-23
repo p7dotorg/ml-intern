@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-agent"
+version = "1.0.0"
+description = "Multi-provider ML workflow framework"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "p7dotorg"}]
+requires-python = ">=3.11"
+dependencies = [
+    "typer[all]==0.9.0",
+    "pydantic==2.5.0",
+    "pydantic-settings==2.1.0",
+    "structlog==23.2.0",
+    "python-dotenv==1.0.0",
+    "anthropic>=0.18.0",
+    "openai>=1.3.0",
+    "httpx>=0.25.0",
+    "PyYAML==6.0",
+    "requests==2.31.0",
+    "tqdm==4.66.1",
+    "pandas==2.1.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.21.0",
+    "black==23.11.0",
+    "isort==5.12.0",
+    "mypy==1.7.0",
+    "ruff==0.1.8",
+]
+
+[project.scripts]
+ml-agent = "ml_agent.cli:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
