@@ -1000,3 +1000,14 @@
 {"ts": "2026-07-23T21:16:27.085052+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
 {"ts": "2026-07-23T21:16:27.096287+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
 {"ts": "2026-07-23T21:16:27.102874+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "all 0 staged files within 150-line limit"}
+{"ts": "2026-07-23T21:16:46.127714+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:16:46.133139+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:16:46.140887+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:18:27.522867+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:18:35.359792+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:18:46.623069+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:19:06.289401+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:19:14.144515+00:00", "gate": "role", "tool": "Edit", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:19:20.150151+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:19:20.162157+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:19:20.180052+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "all 0 staged files within 150-line limit"}
