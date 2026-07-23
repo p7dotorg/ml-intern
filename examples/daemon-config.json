@@ -1,0 +1,30 @@
+{
+  "workflows": [
+    {
+      "workflow": "arxiv-dataset",
+      "config": {
+        "output_file": "datasets/latex_explanations.jsonl",
+        "papers_count": 100,
+        "categories": ["math.LA", "math.AP"],
+        "max_equations_per_paper": 20
+      }
+    },
+    {
+      "workflow": "fine-tune",
+      "config": {
+        "dataset_file": "datasets/latex_explanations.jsonl",
+        "model_name": "flan-t5-base",
+        "num_epochs": 3,
+        "batch_size": 32
+      }
+    },
+    {
+      "workflow": "deploy",
+      "config": {
+        "model_path": "models/latex-explainer",
+        "repo_name": "latex-explainer",
+        "private": false
+      }
+    }
+  ]
+}

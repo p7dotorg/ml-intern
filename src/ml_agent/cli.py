@@ -61,6 +61,10 @@ def validate_auth(
         logger.error("Auth error", provider=provider, error=str(e))
         raise typer.Exit(1)
 
+# Note: daemon command disabled due to typer/click compatibility issue
+# Use: python3 run_daemon.py instead (in project root)
+
+
 @app.command()
 def version():
     """Show version."""

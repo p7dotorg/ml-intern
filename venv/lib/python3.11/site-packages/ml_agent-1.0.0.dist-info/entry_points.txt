@@ -1,0 +1,2 @@
+[console_scripts]
+ml-agent = ml_agent.cli:app
