@@ -1,6 +1,7 @@
 README.md
 pyproject.toml
 src/ml_agent/__init__.py
+src/ml_agent/agent_cli.py
 src/ml_agent/agent_daemon.py
 src/ml_agent/cli.py
 src/ml_agent.egg-info/PKG-INFO
@@ -11,6 +12,7 @@ src/ml_agent.egg-info/requires.txt
 src/ml_agent.egg-info/top_level.txt
 src/ml_agent/auth/__init__.py
 src/ml_agent/auth/manager.py
+src/ml_agent/auth/oauth.py
 src/ml_agent/auth/strategies.py
 src/ml_agent/core/__init__.py
 src/ml_agent/core/agent.py
