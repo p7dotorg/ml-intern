@@ -16,6 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from ml_agent.auth.oauth import OAuthManager
+from ml_agent.auth.oauth_server import oauth_login_flow
 from ml_agent.auth.manager import AuthManager
 
 
@@ -62,50 +63,46 @@ def show_status():
 
 
 def login_claude():
-    """Login to Claude Pro."""
-    print("🔐 Logging in to Claude Pro...\n")
-
+    """Login to Claude Pro via OAuth."""
     oauth_manager = OAuthManager()
 
-    print("Opening Claude.ai login in your browser...")
-    print("1. Authenticate with your account")
-    print("2. Grant permission to ml-agent")
-    print("3. Copy the auth code here\n")
+    # OAuth URL (in real app, would be from Anthropic)
+    oauth_url = "https://claude.ai/login?client_id=ml-agent&redirect_uri=http://localhost:8888/callback&scope=profile%20email"
 
-    auth_code = input("Auth code: ").strip()
+    # Start OAuth flow
+    auth_code = oauth_login_flow("Claude Pro", oauth_url)
 
     if not auth_code:
-        print("❌ Auth code required")
+        print("❌ Authentication failed")
         return False
 
+    # Save credentials
     oauth_manager.authenticate_claude_oauth(auth_code)
 
-    print("\n✓ Claude Pro login successful!")
+    print("✓ Claude Pro login successful!")
     print(f"✓ Token saved to ~/.ml-agent/auth.json")
 
     return True
 
 
 def login_openai():
-    """Login to ChatGPT Plus."""
-    print("🔐 Logging in to ChatGPT Plus...\n")
-
+    """Login to ChatGPT Plus via OAuth."""
     oauth_manager = OAuthManager()
 
-    print("Opening ChatGPT login in your browser...")
-    print("1. Authenticate with your account")
-    print("2. Grant permission to ml-agent")
-    print("3. Copy the auth code here\n")
+    # OAuth URL (in real app, would be from OpenAI)
+    oauth_url = "https://auth.openai.com/authorize?client_id=ml-agent&redirect_uri=http://localhost:8888/callback&scope=openai.profile%20openai.email&response_type=code"
 
-    auth_code = input("Auth code: ").strip()
+    # Start OAuth flow
+    auth_code = oauth_login_flow("ChatGPT Plus", oauth_url)
 
     if not auth_code:
-        print("❌ Auth code required")
+        print("❌ Authentication failed")
         return False
 
+    # Save credentials
     oauth_manager.authenticate_openai_oauth(auth_code)
 
-    print("\n✓ ChatGPT Plus login successful!")
+    print("✓ ChatGPT Plus login successful!")
     print(f"✓ Token saved to ~/.ml-agent/auth.json")
 
     return True
