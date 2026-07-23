@@ -1,0 +1,197 @@
+/* LaTeX Explainer Styles */
+
+.latex-expr {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95em;
+  white-space: nowrap;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  outline: none;
+}
+
+.latex-expr:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.latex-expr:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.latex-expr.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.latex-expr.latex-display {
+  display: block;
+  margin: 10px 0;
+  padding: 8px 12px;
+  font-size: 1.1em;
+}
+
+.latex-expr.latex-inline {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Popup de Explicação */
+#latex-explanation-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.explanation-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.explanation-content.error {
+  background: #fee;
+  border-left: 4px solid #c33;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #f0f0f0;
+  color: #000;
+}
+
+.latex-header {
+  font-family: 'Courier New', monospace;
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.95em;
+  color: #333;
+  word-break: break-word;
+  border-left: 3px solid #667eea;
+}
+
+.explanation-text {
+  line-height: 1.6;
+  color: #333;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.explanation-text strong {
+  color: #667eea;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .explanation-content {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  .explanation-content.error {
+    background: #3a1f1f;
+    border-left-color: #ff6b6b;
+  }
+
+  .close-btn {
+    color: #aaa;
+  }
+
+  .close-btn:hover {
+    background: #333;
+    color: #fff;
+  }
+
+  .latex-header {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-left-color: #7c8eea;
+  }
+
+  .explanation-text {
+    color: #e0e0e0;
+  }
+
+  .explanation-text strong {
+    color: #7c8eea;
+  }
+
+  #latex-explanation-popup {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .explanation-content {
+    max-width: 90vw;
+    max-height: 80vh;
+    margin: 20px;
+  }
+
+  .latex-header {
+    font-size: 0.85em;
+  }
+
+  .explanation-text {
+    font-size: 13px;
+  }
+}

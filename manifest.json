@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "LaTeX Explainer",
+  "version": "1.0.0",
+  "description": "Clique em expressões LaTeX em papers para obter explicações instantâneas",
+  "permissions": [
+    "scripting",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.arxiv.org/*",
+        "*://*.researchgate.net/*",
+        "*://*.scholar.google.com/*",
+        "<all_urls>"
+      ],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "LaTeX Explainer"
+  },
+  "icons": {
+    "16": "assets/icon-16.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "latex-explainer",
+  "version": "1.0.0",
+  "description": "Chrome extension to explain LaTeX expressions in academic papers using AI",
+  "author": "Lucian Fialho",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "serve": "http-server . -p 8000",
+    "build": "echo 'No build step required - this is a web extension'",
+    "test": "echo 'Add tests here when needed'"
+  },
+  "keywords": [
+    "latex",
+    "math",
+    "chrome-extension",
+    "webgpu",
+    "ai",
+    "explainer"
+  ]
+}
