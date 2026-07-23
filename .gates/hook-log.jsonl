@@ -1011,3 +1011,25 @@
 {"ts": "2026-07-23T21:19:20.150151+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
 {"ts": "2026-07-23T21:19:20.162157+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
 {"ts": "2026-07-23T21:19:20.180052+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "all 0 staged files within 150-line limit"}
+{"ts": "2026-07-23T21:19:22.810128+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:19:22.811749+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:19:22.819549+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:22:51.873804+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:22:55.188039+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:23:16.651062+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:23:21.016267+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:21.021095+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:23:21.033460+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:24.590257+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:24.597119+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:23:24.610248+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:27.619258+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:27.626696+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:23:27.638518+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:30.729067+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:30.732253+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:23:30.740397+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:36.868987+00:00", "gate": "role", "tool": "Edit", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T21:23:41.719488+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T21:23:41.726470+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T21:23:41.737085+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "all 0 staged files within 150-line limit"}
