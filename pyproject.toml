@@ -39,8 +39,15 @@ dev = [
 [project.scripts]
 ml-agent = "ml_agent.cli:app"
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
+pythonpath = ["src"]
