@@ -1116,3 +1116,14 @@
 {"ts": "2026-07-23T22:48:55.036193+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
 {"ts": "2026-07-23T22:48:55.051987+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
 {"ts": "2026-07-23T22:48:55.056756+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "all 0 staged files within 150-line limit"}
+{"ts": "2026-07-23T22:48:57.754713+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T22:48:57.756768+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T22:48:57.766282+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T23:00:25.551998+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T23:00:36.723728+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T23:00:47.331371+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T23:00:55.865263+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T23:01:01.328851+00:00", "gate": "role", "tool": "Write", "decision": "allow", "reason": "CLAUDE_ACTIVE_SPECIALIST not set — permissive mode"}
+{"ts": "2026-07-23T23:01:06.424413+00:00", "gate": "pr_structure", "tool": "Bash", "decision": "allow", "reason": "not a gh pr create"}
+{"ts": "2026-07-23T23:01:06.437055+00:00", "gate": "metadata", "tool": "Bash", "decision": "allow", "reason": "not a git commit"}
+{"ts": "2026-07-23T23:01:06.440556+00:00", "gate": "file-size", "tool": "", "decision": "allow", "reason": "all 0 staged files within 150-line limit"}
