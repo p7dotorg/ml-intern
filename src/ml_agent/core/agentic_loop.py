@@ -5,10 +5,72 @@ Similar to Hugging Face ml-intern's submission loop
 
 import json
 import re
+import os
+import subprocess
+import tempfile
+from pathlib import Path
 from typing import Dict, Optional
-from anthropic import Anthropic
 from ml_agent.core.context_manager import ContextManager
 from ml_agent.core.tool_router import ToolRouter
+
+
+class ClaudeClient:
+    """Client using Claude CLI with --continue for multi-turn."""
+
+    def __init__(self):
+        # Check claude CLI is available
+        try:
+            subprocess.run(
+                ["claude", "--version"],
+                capture_output=True,
+                timeout=2,
+                check=True
+            )
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            raise RuntimeError("Claude CLI not found. Install it: https://claude.ai/download")
+        print("✓ Using Claude CLI")
+        self.session_id = None
+
+    def messages_create(self, model: str, max_tokens: int, system: str, messages: list) -> str:
+        """Call Claude via CLI, using --continue for multi-turn."""
+        # Build the prompt from messages
+        prompt_parts = []
+        for msg in messages:
+            prompt_parts.append(f"[{msg['role'].upper()}]\n{msg['content']}")
+
+        prompt = "\n\n".join(prompt_parts)
+
+        cmd = ["claude", "-p", prompt]
+
+        # Add system prompt as append flag
+        if system:
+            cmd.extend(["--append-system-prompt", system])
+
+        # Use --continue if we have a session
+        if self.session_id:
+            cmd.extend(["--continue", "--resume", self.session_id])
+
+        try:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=120
+            )
+
+            if result.returncode == 0:
+                output = result.stdout.strip()
+                # Extract session ID from output if present
+                if "session:" in result.stderr.lower():
+                    lines = result.stderr.split('\n')
+                    for line in lines:
+                        if "session" in line.lower():
+                            self.session_id = line.split(":")[-1].strip()
+                return output
+            else:
+                raise RuntimeError(f"Claude error: {result.stderr[:200]}")
+        except subprocess.TimeoutExpired:
+            raise RuntimeError("Claude call timed out")
 
 
 class DoomLoopDetector:
@@ -40,7 +102,7 @@ class AgenticLoop:
     """Main agent loop - iterates until task completion."""
 
     def __init__(self, provider: str = "claude"):
-        self.client = Anthropic()
+        self.client = ClaudeClient()
         self.context = ContextManager()
         self.router = ToolRouter()
         self.doom_detector = DoomLoopDetector()
@@ -49,30 +111,34 @@ class AgenticLoop:
 
     def get_system_prompt(self) -> str:
         """System prompt for the agent."""
-        return f"""You are an autonomous ML research agent.
+        return f"""You are an autonomous ML research agent working on LaTeX dataset collection and model training.
 
-Your task: Collect LaTeX datasets, train models, and deploy them to Hugging Face Hub.
+IMPORTANT: You MUST call tools to complete tasks. Do not just describe what you would do.
 
 Available tools:
 {self.router.get_tool_specs()}
 
-For each turn:
-1. Analyze the current state
-2. Decide the next action
-3. Call a tool with: <tool_call>
-{{
-  "tool": "tool_name",
-  "params": {{"key": "value"}}
-}}
+CRITICAL TOOL CALLING FORMAT:
+When you need to call a tool, YOU MUST respond with EXACTLY this format:
+
+<tool_call>
+{{"tool": "tool_name", "params": {{"param1": "value1", "param2": "value2"}}}}
 </tool_call>
-4. Interpret results and continue
+
+Then wait for the result and continue.
+
+MANDATORY WORKFLOW:
+1. Start by calling collect_arxiv to fetch papers
+2. After collection, call train_model with the dataset
+3. After training, call deploy_model to save the result
+4. Report progress at each step
+5. Stop only when all steps are complete
 
 Guidelines:
-- Be autonomous - make decisions without asking
-- Iterate until completion
-- Report progress after each step
-- Handle failures gracefully
-- Stop when task is complete"""
+- Always use tool_call blocks for actions
+- Be autonomous - make decisions without asking for permission
+- Never skip steps
+- Report what you did after each tool call"""
 
     async def run(self, task: str, max_iterations: int = 300) -> Dict:
         """Run the agentic loop."""
@@ -90,14 +156,12 @@ Guidelines:
             print(f"[Iteration {self.iteration}/{self.max_iterations}]")
 
             # Get response from Claude
-            response = self.client.messages.create(
+            assistant_message = self.client.messages_create(
                 model="claude-opus-4-8",
                 max_tokens=2048,
                 system=self.get_system_prompt(),
                 messages=self.context.get_messages(),
             )
-
-            assistant_message = response.content[0].text
             self.context.add_message("assistant", assistant_message)
 
             print(f"Agent: {assistant_message[:200]}...\n")
